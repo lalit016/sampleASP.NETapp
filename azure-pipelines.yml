@@ -7,12 +7,15 @@ trigger:
 - master
 
 pool:
-  vmImage: windows - 2019
+  vmImage: windows-2019
+
+steps:
 
 - task: NuGetToolInstaller@1
   inputs:
     versionSpec: 
     checkLatest: true
+
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
@@ -22,4 +25,3 @@ pool:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '**/*.sln'
